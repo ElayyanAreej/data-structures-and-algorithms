@@ -78,8 +78,9 @@ Write a function named forEachTwoToThe that produces the same output as your for
 const forEachTwoToThe = (arr) => {
   // Solution code here...
   let newArry=[];
-  for(let i=0;i<arr.length;i++)
-    newArry.push(Math.pow(2,arr[i]));
+  arr.forEach((item)=>{
+    newArry.push(Math.pow(2,item));
+  });
 
   return newArry;
 };
@@ -92,11 +93,15 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
-  let newArry=[];
-  arr.forEach((item)=>{
-    newArry.push(Math.pow(2,item));
+  let newArry=arr.map((item)=>{
+    return Math.pow(2,item);
   });
   return newArry;
+  // let newArry=[];
+  // arr.forEach((item)=>{
+  //   newArry.push(Math.pow(2,item));
+  // });
+  // return newArry;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -244,7 +249,7 @@ const extractStats = (arr) => {
       iniarr.push(this);
     }
     let obj=new Object();
-  console.log(iniarr);}
+    console.log(iniarr);}
     // iniarr.push(`name:`+`${item.stat.name}`);
     // iniarr.push(`total:`+(item.stat.effort+item.stat.effort));
   );

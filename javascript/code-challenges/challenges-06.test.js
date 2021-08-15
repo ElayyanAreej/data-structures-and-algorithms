@@ -27,30 +27,27 @@ const getNames = (arr) => {
   let nameArry = arr.map((item) => {
     return item.name;
   });
-  console.log(nameArry);
+  console.log('to create arry of name', nameArry);
 
-  let reversedNameArry = nameArry.map((item) => {
-    let arryOfChar = Array.from(item);
-    console.log(arryOfChar);
+  let arryOfChar = nameArry.map((item) => {
+    return Array.from(item);
+  });
+  console.log('to convert name to arry of char', arryOfChar);
 
-    let reversedArryOfChar = arryOfChar.reduce((acc, val, idx) => {
-      idx = (arryOfChar.length - idx - 1);
-      acc.push(arryOfChar[idx]);
-      return acc;
-    }, []);
-    console.log(reversedArryOfChar);
-
-    let revName = reversedArryOfChar.reduce((acc, val, idx) => {
-      acc+= val;
-      console.log(acc);
+  let reversedArrysOfChar = arryOfChar.map((item) => {
+    let revName = item.reduce((acc, val, idx) => {
+      idx = (item.length - idx - 1);
+      acc += item[idx];
+      console.log('acc', acc);
       return acc;
     }, '');
-    console.log(revName);
-
+    console.log('revName', revName);
     return revName;
   });
-  console.log(getNames(reversedNameArry));
-  return reversedNameArry;
+  console.log(reversedArrysOfChar);
+
+  return reversedArrysOfChar;
+
 
 
 };
@@ -64,7 +61,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 
 const appendTheEnd = (str) => {
   // Solution code here...
-  let newString= str+' The end.';
+  let newString = str + ' The end.';
   return newString;
 };
 
@@ -83,6 +80,7 @@ console.log(a) prints [1, 2, 3, 1]
 
 const appendFirstToLast = (arr) => {
   // Solution code here...
+  arr.push(arr[0]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,6 +100,7 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 
 const addBirthYearProperty = (obj, year) => {
   // Solution code here...
+  obj['yearBorn'] = year;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -119,6 +118,9 @@ console.log(people[1].isAuthor) prints true
 
 const setStatusAsAuthor = (people) => {
   // Solution code here...
+  people.forEach((item)=>{
+    item['isAuthor'] = true;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -138,7 +140,9 @@ console.log(a) prints [1, 2, 3, 4]
 
 const append = (arr1, arr2) => {
   // Solution code here...
-
+  arr2.forEach((item)=>{
+    arr1.push(item);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -187,7 +191,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should add a property to every object in an array', () => {
     const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
     setStatusAsAuthor(a);
@@ -198,7 +202,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should append the second array to the first', () => {
     const a = [1, 2, 3, 4];
     const b = [5, 6, 7, 8];

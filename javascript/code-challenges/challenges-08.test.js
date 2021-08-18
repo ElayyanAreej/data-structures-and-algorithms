@@ -126,8 +126,12 @@ const isCapitalized = (str) => {
   // let regex1 = /\b[A-Z]\w*/g;
   // let  arr=str.match(regex1);
   // return arr;
-  let regex1 = /\b[A-Z]\w*/;
+
+  let regex1 = /\b[A-Z]\w*/g;
   let arr = str.match(regex1);
+  if (arr === null) {
+    return [];
+  }
   return arr;
 };
 

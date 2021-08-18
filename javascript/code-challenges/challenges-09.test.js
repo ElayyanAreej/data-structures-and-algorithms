@@ -177,26 +177,42 @@ const hasChildrenValues = (arr, character) => {
       return item;
     }
   });
-  let result;
+  console.log(childrenObjArr);
+
+  // to get arry of values
+  let parentNameArr = [];
+  childrenObjArr.forEach((item) => {
+    let initialParentNameArr = Object.values(item);
+    parentNameArr.push(initialParentNameArr);
+  });
+  console.log(parentNameArr);
+
   // to get parent name
-  for (let i = 0; i < childrenObjArr.length; i++) {
-    let parentArr = Object.values(childrenObjArr[i].name);
-    result = parentArr.find((name) => {
-      if (name === character) {
-        return name;
-      }
-    });
-  }
+  let finalParentName = [];
+  parentNameArr.forEach((item) => {
+    for (let i = 0; i < 1; i++) {
+      console.log(item[0]);
+      finalParentName.push(item[0]);
+    }
+  });
+  console.log(finalParentName);
+
+  let result = finalParentName.find((name) => {
+    if (name === character) {
+      console.log(name);
+      return name;
+    }
+  });
+
+  console.log(result);
   let foundChild;
   if (result === undefined) {
-    foundChild = false;  } 
-    else if(result === null){
     foundChild = false;
-  }
-  else {
+  } else if (result === null) {
+    foundChild = false;
+  } else {
     foundChild = true;
   }
-
   return foundChild;
 
   // check if parent name as the character
